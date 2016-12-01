@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import HeaderBlock from './HeaderBlock'
+import HeaderBlock from './../HeaderBlock'
 import {mapMutations} from 'vuex'
 export default {
   data () {
@@ -176,22 +176,22 @@ h1 {
   text-align:center;
 }
 .category-icon-hot{
-  background:url(../assets/hot_119x119.png) no-repeat center;
+  background:url(../../assets/hot_119x119.png) no-repeat center;
 } 
 .category-icon-specialty{
-  background:url(../assets/specialty_119x119.png) no-repeat center;
+  background:url(../../assets/specialty_119x119.png) no-repeat center;
 } 
 .category-icon-drinks{
-  background:url(../assets/drinks_119x119.png) no-repeat center;
+  background:url(../../assets/drinks_119x119.png) no-repeat center;
 } 
 .category-icon-tea{
-  background:url(../assets/tea_119x119.png) no-repeat center;
+  background:url(../../assets/tea_119x119.png) no-repeat center;
 } 
 .category-icon-process{
-  background:url(../assets/process_119x119.png) no-repeat center;
+  background:url(../../assets/process_119x119.png) no-repeat center;
 } 
 .category-icon-fruit{
-  background:url(../assets/fruit_119x119.png) no-repeat center;
+  background:url(../../assets/fruit_119x119.png) no-repeat center;
 } 
 .category-span-box{
   width:48px;
@@ -247,7 +247,7 @@ position:relative;
   display:inline-block;
   width:24px;
   height:24px;
-  background:url(../assets/addCart.svg) no-repeat center;
+  background:url(../../assets/addCart.svg) no-repeat center;
   position:absolute;
   bottom:0px;
   right: 15px;

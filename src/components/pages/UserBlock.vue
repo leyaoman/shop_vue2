@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import HeaderBlock from './HeaderBlock'
+import HeaderBlock from './../HeaderBlock'
 
 export default {
   data () {

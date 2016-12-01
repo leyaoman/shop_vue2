@@ -5,18 +5,18 @@ import App from './App'
 
 
 //引入页面模块
-import Hello from './components/Hello.vue'
-import DataTest from './components/DataTest.vue'
-import Home from './components/Home.vue'
-import Detail from './components/Detail.vue'
-import Sort from './components/SortBlock.vue'
-import Cart from './components/CartBlock.vue'
-import User from './components/UserBlock.vue'
-import Login from './components/Login.vue'
+import Hello from './components/pages/Hello.vue'
+import DataTest from './components/pages/DataTest.vue'
+import Home from './components/pages/Home.vue'
+import Detail from './components/pages/Detail.vue'
+import Sort from './components/pages/SortBlock.vue'
+import Cart from './components/pages/CartBlock.vue'
+import User from './components/pages/UserBlock.vue'
+import Login from './components/pages/Login.vue'
 //引入UI模块
 import ui_num from './ui-components/ui-num.vue'
 import ui_switch from './ui-components/ui-switch.vue'
-import TestBlock from './components/TestBlock'
+import TestBlock from './components/pages/TestBlock'
 //引入路由
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
@@ -94,6 +94,7 @@ store.commit('UPDATEFOOTERBUTTON',btnArray);
 //高亮按钮
 const btnHighlight = function(to){
  var _btnArray = store.getters.getFooterButton;
+	console.log(to);
   var pagemark="";
   switch(to.name){
     case '/': pagemark ='home';break;
@@ -106,10 +107,10 @@ const btnHighlight = function(to){
         _btnArray.forEach(function(item,index){
           if(item.url.indexOf(pagemark)>-1){
             item.select = true;
-            item.className = item.className.replace(/-c$/,'') + '-c';
+            item.className = item.className.replace(/-c$/,'') + '-t';
           }else{
             item.select = false;
-            item.className = item.className.replace(/-c$/,'');
+            item.className = item.className.replace(/-t$/,'');
           }
         })
       store.commit('UPDATEFOOTERBUTTON', _btnArray);

@@ -35,8 +35,8 @@
 </template>
 
 <script>
-import HeaderBlock from './HeaderBlock'
-import uinum from '../ui-components/ui-detail-num'
+import HeaderBlock from './../HeaderBlock'
+import uinum from '../../ui-components/ui-detail-num'
 export default {
   data () {
     return {
@@ -106,11 +106,11 @@ export default {
 	        border-radius: 12px;
 }
 .cart-box-select .checked,.cart-box-check-wrap .checked{
-  	background:url(../assets/checked.svg) no-repeat center;
+  	background:url(../../assets/checked.svg) no-repeat center;
 }
 
 .cart-box-select .unchecked,.cart-box-check-wrap .unchecked{
- 	background:url(../assets/unchecked.svg) no-repeat center;
+ 	background:url(../../assets/unchecked.svg) no-repeat center;
 }
 .cart-box-select .checked,.cart-box-select .unchecked{
 	background-size:26px 26px;

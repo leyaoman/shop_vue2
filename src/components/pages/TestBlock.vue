@@ -24,10 +24,10 @@
 </template>
 
 <script>
-import uiswitch from '../ui-components/ui-switch'
-import uinum from '../ui-components/ui-num'
-import uiinput from '../ui-components/ui-input'
-import uitabs from '../ui-components/ui-tabs'
+import uiswitch from '../../ui-components/ui-switch'
+import uinum from '../../ui-components/ui-num'
+import uiinput from '../../ui-components/ui-input'
+import uitabs from '../../ui-components/ui-tabs'
 
 export default {
   data () {  

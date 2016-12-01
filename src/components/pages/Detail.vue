@@ -79,9 +79,9 @@
 </template>
 
 <script>
-import HeaderBlock from './HeaderBlock'
-import uinum from '../ui-components/ui-detail-num'
-import uitabs from '../ui-components/ui-detail-tabs'
+import HeaderBlock from './../HeaderBlock'
+import uinum from '../../ui-components/ui-detail-num'
+import uitabs from '../../ui-components/ui-detail-tabs'
 import { mapGetters} from 'vuex'
 
 export default {

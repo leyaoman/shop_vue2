@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import HeaderBlock from './HeaderBlock'
+import HeaderBlock from './../HeaderBlock'
 import {mapMutations} from 'vuex'
 export default {
   data () {
