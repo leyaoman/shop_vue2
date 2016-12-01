@@ -2,13 +2,14 @@
   "name": "shop_vue2",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "xuanfengchen <xuanfengchen@Ctrip.com>",
+  "author": "jensen <jensen5201@163.com>",
   "private": true,
   "scripts": {
     "start": "node build/dev-server.js",
     "build": "node build/build.js"
   },
   "dependencies": {
+    "mint-ui": "^2.0.5",
     "vue": "^2.0.1",
     "vue-resource": "^1.0.3",
     "vue-router": "^2.0.0",

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
       <router-view keep-alive></router-view>
-      <div class="tab-bar">
+      <div class="tab-bar" v-show="status">
         <ul class="menu">
             <template v-for="(item,index) in itemlist" >
             <li v-bind:data-index="index" v-bind:data-url="item.url" v-on:click="tapItem">
@@ -18,8 +18,11 @@
 import { mapGetters,mapActions} from 'vuex'
 
 export default {
+
+
   computed: mapGetters({
-    itemlist: 'getFooterButton'
+    itemlist: 'getFooterButton',
+      status:'getState'
   }),
   methods:{
       tapItem:function(e){

@@ -4,6 +4,11 @@ import Vue from 'vue'
 import App from './App'
 
 
+//引入和注册UI组件
+import mintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+Vue.use(mintUI);
+
 //引入页面模块
 import Hello from './components/pages/Hello.vue'
 import DataTest from './components/pages/DataTest.vue'
@@ -13,10 +18,14 @@ import Sort from './components/pages/SortBlock.vue'
 import Cart from './components/pages/CartBlock.vue'
 import User from './components/pages/UserBlock.vue'
 import Login from './components/pages/Login.vue'
-//引入UI模块
+
+
+//引入UI模块页面
 import ui_num from './ui-components/ui-num.vue'
 import ui_switch from './ui-components/ui-switch.vue'
 import TestBlock from './components/pages/TestBlock'
+
+
 //引入路由
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
@@ -88,8 +97,11 @@ var btnArray = [{name:'首页',className:'icon-house',url:'/home',select:false},
   {name:'分类',className:'icon-sort',url:'/sort',select:false},
   {name:'购物车',className:'icon-car',url:'/cart',select:false},
   {name:'我的',className:'icon-user',url:'/user',select:false}];
+
+const status=true
 //初始化默认数据
 store.commit('UPDATEFOOTERBUTTON',btnArray);
+store.commit('UPDATETABSTATE',status);
 
 //高亮按钮
 const btnHighlight = function(to){
@@ -100,7 +112,7 @@ const btnHighlight = function(to){
     case '/': pagemark ='home';break;
     case 'home': pagemark ='home';break;
     case 'sort': pagemark ='sort';break;
-    case 'cart': pagemark ='car';break;
+    case 'cart': pagemark ='cart';break;
     case 'user': pagemark ='user';break;
   }
   if(pagemark){

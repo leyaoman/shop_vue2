@@ -87,6 +87,7 @@ import { mapGetters} from 'vuex'
 export default {
   data () {
     return {
+        status:false,
       tabsData:[{text:'详细信息'},{text:'用户评价'}],
       tabStatus:{commentBox:'dspnone',introduceBox:''}
     }
