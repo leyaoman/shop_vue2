@@ -12,11 +12,11 @@ Vue.use(mintUI);
 //引入页面模块
 import Hello from './components/pages/Hello.vue'
 import DataTest from './components/pages/DataTest.vue'
-import Home from './components/pages/Home.vue'
+import Home from './components/pages/Module-Home.vue'
 import Detail from './components/pages/Detail.vue'
-import Sort from './components/pages/SortBlock.vue'
-import Cart from './components/pages/CartBlock.vue'
-import User from './components/pages/UserBlock.vue'
+import Sort from './components/pages/Module-Sort.vue'
+import Cart from './components/pages/Module-Cart.vue'
+import User from './components/pages/Module-User.vue'
 import Login from './components/pages/Login.vue'
 
 
@@ -26,7 +26,7 @@ import ui_switch from './ui-components/ui-switch.vue'
 import TestBlock from './components/pages/TestBlock'
 
 
-//引入路由
+//引入路由和res
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 
@@ -95,18 +95,16 @@ const router  = new VueRouter({
 //按钮默认数据
 var btnArray = [{name:'首页',className:'icon-house',url:'/home',select:false},
   {name:'分类',className:'icon-sort',url:'/sort',select:false},
-  {name:'购物车',className:'icon-car',url:'/cart',select:false},
+  {name:'购物车',className:'icon-cart',url:'/cart',select:false},
   {name:'我的',className:'icon-user',url:'/user',select:false}];
 
-const status=true
 //初始化默认数据
 store.commit('UPDATEFOOTERBUTTON',btnArray);
-store.commit('UPDATETABSTATE',status);
 
 //高亮按钮
 const btnHighlight = function(to){
  var _btnArray = store.getters.getFooterButton;
-	console.log(to);
+	/*console.log(to);*/
   var pagemark="";
   switch(to.name){
     case '/': pagemark ='home';break;
@@ -119,13 +117,18 @@ const btnHighlight = function(to){
         _btnArray.forEach(function(item,index){
           if(item.url.indexOf(pagemark)>-1){
             item.select = true;
-            item.className = item.className.replace(/-c$/,'') + '-t';
+            item.className = item.className.replace(/-t$/,'') + '-t';
           }else{
             item.select = false;
             item.className = item.className.replace(/-t$/,'');
           }
         })
-      store.commit('UPDATEFOOTERBUTTON', _btnArray);
+		const _status=true;
+		store.commit('UPDATETABSTATE', _status);
+      	store.commit('UPDATEFOOTERBUTTON', _btnArray);
+  }else{
+	  const _status=false;
+	  store.commit('UPDATETABSTATE', _status);
   }
 }
 //开启路由
@@ -149,9 +152,10 @@ router.beforeEach((to, from, next) => {
 })
 
 /* eslint-disable no-new */
-new Vue({
+let vue=new Vue({
   store,
   el: '#app',
   router,
   render: h => h(App)
 })
+console.log(vue);

@@ -6,7 +6,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
     ._footer-bar {
         text-align: center;
         height: 32px;
@@ -14,5 +14,8 @@
         color: #888;
         font-size: 13px;
         border-top: 1px solid #e5e5e5;
+    }
+    a{
+        color: #333;
     }
 </style>

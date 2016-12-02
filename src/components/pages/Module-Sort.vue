@@ -1,6 +1,5 @@
 <template>
   <div class="sort-box">
-  	<header-block title="Sort"> </header-block>
 	<div class="sort-content">
 		<ul class="sort-class" v-on:click="switchclass">
 			<li v-for="item in provincelist" v-bind:class="item.ischeck?'brnone':''">
@@ -20,10 +19,8 @@
 </template>
 
 <script>
-import HeaderBlock from './../HeaderBlock'
 
 export default {
-  components: { HeaderBlock },
   data () {
     return {
 		provincelist:[{name:'温情好礼',id:'1',className:'',ischeck:true},

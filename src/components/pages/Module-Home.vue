@@ -1,9 +1,8 @@
 <template>
   <div class="home-box">
-  	<header-block title="Home"> </header-block>
   	<div>
   	   <template v-for="item in imglist">
-		      <img style="width:100%;height:100%;display:block;overflow:hidden;" v-bind:src="item.src">
+		      <img style="width:100%;height:100%;display:block;overflow:hidden;" :src="item.src">
 	     </template>
   	</div>
   	<div class="category-box">
@@ -16,8 +15,8 @@
   	</div>
     <div class="home-product-box">
         <ul>
-            <li v-for="item in productlist" v-on:click="clickitem" v-bind:data-id="item.id" >
-                <img v-bind:src="item.imgsrc" class="home-box-product-img"/>
+            <li v-for="item in productlist" @click="clickitem" :data-id="item.id" >
+                <img :src="item.imgsrc" class="home-box-product-img"/>
                 <div class="home-product-content">
                     <h3 v-text="item.title" class="home-product-h3"></h3>
                     <h4 v-text="item.standard" class="home-product-h4"></h4>
@@ -34,7 +33,9 @@
 </template>
 
 <script>
-import HeaderBlock from './../HeaderBlock'
+import Vue from 'vue'
+import res from 'vue-resource'
+Vue.use(res)
 import {mapMutations} from 'vuex'
 export default {
   data () {
@@ -46,6 +47,9 @@ export default {
       {clasName:'category-icon-tea',title:'茶叶'},
       {clasName:'category-icon-process',title:'手工'},
       {clasName:'category-icon-fruit',title:'果蔬'}],
+        /*http://211.149.193.19:8080/api/customers*/
+      /*jsonpUrl:'http://192.168.1.108:8081/tempdata/productlist.json',*/
+      jsonpUrl:'http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20&page=2',
       productlist:[{id:321251,imgsrc:'http://imgws1.fruitday.com/images/2016-06-21/bfafa417de533a932a92b5e7987a9912.jpg',title:'巨无霸-佳沛新西兰阳光金奇异果',standard:'规格:800g',favorable_price:78,price:'88'},
       {id:554215,imgsrc:'http://imgws4.fruitday.com/images/product_pic/13657/1/1-180x180-13657-SD3SKTAD.jpg',title:'美国优选有机绿牛油果',standard:'规格:300-350g',favorable_price:72,price:'79'},
       {id:741852,imgsrc:'http://imgws4.fruitday.com/images/2015-07-08/fa213aef7eca1f9dc66e44109c4c0325.jpg',title:'山东威海大樱桃',standard:'规格:500g',favorable_price:129,price:'159'},
@@ -56,6 +60,28 @@ export default {
   },
   methods:{
      ...mapMutations(['UPDATEUSER','UPDATECITY','UPDATEPRODUCT']),
+
+    /*尝试http请求*/
+     requestData: function(){
+         this.$http.jsonp(this.jsonpUrl)
+                 .then(function(data){
+                     console.log(data.data);
+                     let _that=this;
+                     let  result=data.data.result;
+//                     this.$set("cname",result[0].aid)
+                     result.forEach(function(item,index){
+
+//                         console.log(item);
+                     })
+
+
+
+                 }, function(error){
+                     console.log(error);
+                 })
+
+     },
+
      setProduct(id){
           var product = {
           "321251":{
@@ -128,22 +154,23 @@ export default {
 
         this.UPDATEPRODUCT(product[id]);
      },
-     upsity(){
+     upcity(){
         const _city = {id:20000,name:'上海市'}
         this.UPDATECITY(_city) 
      },
      clickitem(e){
-        console.log('测试');
-        this.upsity()
+         this.requestData();
+        console.log('测试',e);
+        this.upcity()
         var _id = e.currentTarget.getAttribute("data-id");
+         console.log(_id);
         if(_id){
             this.setProduct(_id);
         }
 
         this.$router.push({ name: 'detail', params: { id: _id}});
      }
-  },
-  components: { HeaderBlock}
+  }
 }
 </script>
 

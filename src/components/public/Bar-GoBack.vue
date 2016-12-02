@@ -1,6 +1,6 @@
 <template>
   <div class="head-box">
-	<span v-on:click="clickback" class="head-box-left">
+	<span @click="clickback" class="head-box-left">
 		<i class="icon-back"></i>
 	</span>
   <span class="head-box-right">
@@ -22,7 +22,9 @@ export default {
      clickback:function(){
      //history.go(-1);
      history.back();
-     //alert(this.title)
+//         const stateObj={title:this.title};
+//       history.pushState(stateObj,null,this.title.vue)
+//     alert(this.title)
      }
   }
 }

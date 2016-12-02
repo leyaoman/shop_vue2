@@ -43,6 +43,7 @@ const getters = {
 	getState:state => {return state.tabState},
 	getFooterButton:state => {return state.footerButtonList}
 }
+/*把vuex对象输出*/
 export default  new Vuex.Store({state,getters,mutations});
 
 

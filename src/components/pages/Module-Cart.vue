@@ -6,19 +6,19 @@
 		<div class="cart-box-list">
 			<div>
          		<div class="cart-box-check-wrap">
-         			<i v-on:click="selectAll" v-bind:class="{'checked':isALL,'unchecked':!isALL}" data-groupid="1"></i> VV超市在线商家
+         			<i @click="selectAll" :class="{'checked':isALL,'unchecked':!isALL}" data-groupid="1"></i> VV超市在线商家
          		</div>
 			</div>
 			<div v-for="(item,index) in productlist" class="cart-box-item">
 				<div class="cart-box-select">
-					<span v-on:click="selectItem" v-bind:data-index="index" v-bind:class="{'checked':item.checked,'unchecked':!item.checked}"></span>
+					<span @click="selectItem" :data-index="index" :class="{'checked':item.checked,'unchecked':!item.checked}"></span>
 				</div>
-				<img v-bind:src="item.src" class="cart-box-img" />
+				<img :src="item.src" class="cart-box-img" />
 				<div class="cart-box-des">
 					<h5 v-text="item.title"></h5>
 <!-- 					<span>
 	<a class="cart-box-des-a">-</a>
-	<input class="cart-box-des-number" type="number" min="1" v-bind:class="item.count" pattern="[0-9]" autocomplete="off" />
+	<input class="cart-box-des-number" type="number" min="1" :class="item.count" pattern="[0-9]" autocomplete="off" />
 	<a class="cart-box-des-a">+</a>
 </span> -->
 <uinum num-value="1" unit="份" min-value="1" max-value="10" change-event-name="child-ui-num"></uinum>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import HeaderBlock from './../HeaderBlock'
+import HeaderBlock from './../public/Bar-GoBack'
 import uinum from '../../ui-components/ui-detail-num'
 export default {
   data () {

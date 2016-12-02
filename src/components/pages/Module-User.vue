@@ -1,19 +1,17 @@
 <template>
   <div class="user-box">
-      <header-block title="User"> </header-block>
       <div class="user-box-bg">
 
       </div>
        <ul>
           <li v-for="item in userOption">
-              <div v-bind:class="['user-box-ul-item',item.className]" v-text="item.name"></div>
+              <div :class="['user-box-ul-item',item.className]" v-text="item.name"></div>
           </li>
        </ul>
   </div>
 </template>
 
 <script>
-import HeaderBlock from './../HeaderBlock'
 
 export default {
   data () {
@@ -27,8 +25,7 @@ export default {
   },
   methods:{
      clickback:function(){alert(this.title)}
-  },
-  components: { HeaderBlock }
+  }
 }
 </script>
 

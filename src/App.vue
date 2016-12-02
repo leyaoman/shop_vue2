@@ -1,28 +1,30 @@
 <template>
   <div id="app">
+
       <router-view keep-alive></router-view>
-      <div class="tab-bar" v-show="status">
+      <div class="tab-bar" v-show="tab_status">
         <ul class="menu">
             <template v-for="(item,index) in itemlist" >
-            <li v-bind:data-index="index" v-bind:data-url="item.url" v-on:click="tapItem">
-                <span v-bind:class="['span-icon-box',item.className]"></span>
-                <span v-text="item.name" v-bind:class="item.select ? 'font-pink':''"></span>
+            <li :data-index="index" :data-url="item.url" @click="tapItem">
+                <span :class="['span-icon-box',item.className]"></span>
+                <span  :class="item.select ? 'font-pink':''">{{item.name}}</span>
             </li>
           </template>
         </ul>
       </div>
+      <footer-bar></footer-bar>
   </div>
 </template>
 
 <script>
-import { mapGetters,mapActions} from 'vuex'
+import { mapGetters,mapActions} from 'vuex';
+import footerBar from "./components/public/Bar-Footer.vue"
 
 export default {
-
-
+  components:{footerBar},
   computed: mapGetters({
     itemlist: 'getFooterButton',
-      status:'getState'
+      tab_status:'getState'
   }),
   methods:{
       tapItem:function(e){
@@ -166,10 +168,10 @@ height:100%;
     background:url(../static/imgs/home/icon@2x/icon_classification_p@2x.png) no-repeat center;
 }
 
-.icon-car{
+.icon-cart{
     background:url(../static/imgs/home/icon@2x/icon_shopping-cart_n@2x.png) no-repeat center;
 }
-.icon-car-t{
+.icon-cart-t{
     background:url(../static/imgs/home/icon@2x/icon_shopping-cart_p@2x.png) no-repeat center;
 }
 
